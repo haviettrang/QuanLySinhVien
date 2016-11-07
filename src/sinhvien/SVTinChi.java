@@ -12,6 +12,7 @@ public class SVTinChi extends SV {
     private int tinChiTichLuy;
 
     public SVTinChi() {
+        
     }
 
     public SVTinChi(int tinChiTichLuy) {
