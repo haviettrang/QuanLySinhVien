@@ -48,7 +48,7 @@ public class MonHoc {
     }
 
     public void setTrongSo(double trongSo) {
-        this.trongSo =  trongSo;
+        this.trongSo = trongSo;
     }
 
     public int getSoTinChi() {
