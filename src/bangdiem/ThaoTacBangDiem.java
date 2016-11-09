@@ -6,7 +6,8 @@ import java.util.ArrayList;
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
  * @date Oct 31, 2016 10:55:03 AM
- * @website haviettrang.blogspot.com View my notes at haviettrang.postach.io
+ * @website haviettrang.blogspot.com
+ * @Notes View my notes at haviettrang.postach.io
  */
 public class ThaoTacBangDiem implements IThaoTac {
 
@@ -34,6 +35,5 @@ public class ThaoTacBangDiem implements IThaoTac {
     public ArrayList<? extends Object> searchByID(String ID) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
    
 }

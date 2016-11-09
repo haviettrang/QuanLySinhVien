@@ -12,7 +12,7 @@ import monhoc.MonHoc;
  */
 public class GiaoVien {
 
-    private String maGiaoVienString;
+    private String maGiaoVien;
     private String hoTen;
     private Date ngaySinh;
     private boolean gioiTinh;
@@ -25,23 +25,12 @@ public class GiaoVien {
 
     }
 
-    public GiaoVien(String maGiaoVienString, String hoTen, Date ngaySinh, boolean gioiTinh, String email, String soDienThoai, String khoaVien, ArrayList<MonHoc> monDay) {
-        this.maGiaoVienString = maGiaoVienString;
-        this.hoTen = hoTen;
-        this.ngaySinh = ngaySinh;
-        this.gioiTinh = gioiTinh;
-        this.email = email;
-        this.soDienThoai = soDienThoai;
-        this.khoaVien = khoaVien;
-        this.monDay = monDay;
+    public String getMaGiaoVien() {
+        return maGiaoVien;
     }
 
-    public String getMaGiaoVienString() {
-        return maGiaoVienString;
-    }
-
-    public void setMaGiaoVienString(String maGiaoVienString) {
-        this.maGiaoVienString = maGiaoVienString;
+    public void setMaGiaoVien(String maGiaoVien) {
+        this.maGiaoVien = maGiaoVien;
     }
 
     public String getHoTen() {

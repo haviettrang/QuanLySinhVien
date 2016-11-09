@@ -1,20 +1,29 @@
 package chung;
 
+import java.util.Date;
+
 /**
  *
  * @author HAVIETTRANG
  */
-public abstract class User {
+public class User {
+    private String ID;
     private String username;
     private String password;
-    
+    private String hoTen;
+    private Date ngaySinh;
+    private String email;
+    private boolean nam;
 
     public User() {
     }
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getUsername() {
@@ -32,15 +41,42 @@ public abstract class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    /**
-     * 
-     * @param matKhauCu
-     * @param matKhauMoi
-     * @return 
-     */
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isNam() {
+        return nam;
+    }
+
+    public void setNam(boolean nam) {
+        this.nam = nam;
+    }
+
     public boolean doiMatKhau(String matKhauCu, String matKhauMoi) {
-        if (matKhauCu.equals(this.password)) {
-            this.password = matKhauCu;
+        if (matKhauCu.equals(password)) {
+            password = matKhauCu;
             return true;
         }
         return false;

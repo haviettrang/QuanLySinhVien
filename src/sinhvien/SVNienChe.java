@@ -1,7 +1,5 @@
 package sinhvien;
 
-import java.util.Date;
-
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
  * @date Oct 28, 2016 2:05:00 PM
@@ -14,20 +12,7 @@ public class SVNienChe extends SV {
     private boolean hocHetMonHoc;
 
     public SVNienChe() {
-    }
-
-    public SVNienChe(boolean hocHetMonHoc) {
-        this.hocHetMonHoc = hocHetMonHoc;
-    }
-
-    public SVNienChe(boolean hocHetMonHoc, String maSv, String tenSv, String lop, Date ngaySinh, boolean gioiTinh, String diaChi, String email, double CPA) {
-        super(maSv, tenSv, lop, ngaySinh, gioiTinh, diaChi, email, CPA);
-        this.hocHetMonHoc = hocHetMonHoc;
-    }
-
-    public SVNienChe(boolean hocHetMonHoc, String maSv, String tenSv, String lop, Date ngaySinh, boolean gioiTinh, String diaChi, String email, double CPA, String username, String password) {
-        super(maSv, tenSv, lop, ngaySinh, gioiTinh, diaChi, email, CPA, username, password);
-        this.hocHetMonHoc = hocHetMonHoc;
+        super();
     }
 
     public boolean isHocHetMonHoc() {
@@ -36,11 +21,17 @@ public class SVNienChe extends SV {
 
     public void setHocHetMonHoc(boolean hocHetMonHoc) {
         this.hocHetMonHoc = hocHetMonHoc;
+        
     }
 
     @Override
     public String getLoaiSinhVien() {
         return "Sinh Viên Niên Chế";
+    }
+
+    @Override
+    public boolean xetTotNghiep() {
+        return hocHetMonHoc;
     }
 
 }
