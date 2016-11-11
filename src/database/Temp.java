@@ -23,6 +23,7 @@ public class Temp {
         
         //In ra loại sinh viên mà không cần quan tâm loại sinh viên tìm được là gì
         System.out.println(sv.getLoaiSinhVien());
+        System.out.println("Code mới tạo bỏi Phùng Kiệt");
         return sv;
     }
 }
