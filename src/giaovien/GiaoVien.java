@@ -1,7 +1,7 @@
 package giaovien;
 
+import chung.User;
 import java.util.ArrayList;
-import java.util.Date;
 import monhoc.MonHoc;
 
 /**
@@ -10,14 +10,9 @@ import monhoc.MonHoc;
  * @website haviettrang.blogspot.com
  * @Notes View my notes at haviettrang.postach.io
  */
-public class GiaoVien {
+public class GiaoVien extends User {
 
-    private String maGiaoVien;
-    private String hoTen;
-    private Date ngaySinh;
-    private boolean gioiTinh;
-    private String email;
-    private String soDienThoai;
+    private int soDienThoai;
     private String khoaVien;
     private ArrayList<MonHoc> monDay;
 
@@ -25,51 +20,11 @@ public class GiaoVien {
 
     }
 
-    public String getMaGiaoVien() {
-        return maGiaoVien;
-    }
-
-    public void setMaGiaoVien(String maGiaoVien) {
-        this.maGiaoVien = maGiaoVien;
-    }
-
-    public String getHoTen() {
-        return hoTen;
-    }
-
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
-    }
-
-    public Date getNgaySinh() {
-        return ngaySinh;
-    }
-
-    public void setNgaySinh(Date ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
-
-    public boolean isGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(boolean gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSoDienThoai() {
+    public int getSoDienThoai() {
         return soDienThoai;
     }
 
-    public void setSoDienThoai(String soDienThoai) {
+    public void setSoDienThoai(int soDienThoai) {
         this.soDienThoai = soDienThoai;
     }
 
