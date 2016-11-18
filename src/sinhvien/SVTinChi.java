@@ -28,7 +28,7 @@ public class SVTinChi extends SV {
 
     @Override
     public boolean xetTotNghiep() {
-        return tinChiTichLuy >= 150 && CPA >= 1.5;
+        return tinChiTichLuy >= 150 && getCPA() >= 1.5;
     }
 
 }

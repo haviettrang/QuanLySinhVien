@@ -8,8 +8,18 @@ import chung.User;
  * @website haviettrang.blogspot.com
  */
 public class CanBoQuanLy extends User {
+    
+    private String soDienThoai;
 
     public CanBoQuanLy() {
         super();
+    }
+
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
 }

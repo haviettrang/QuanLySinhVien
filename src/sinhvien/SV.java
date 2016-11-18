@@ -11,7 +11,7 @@ public abstract class SV extends User {
     private String lop;
     private String khoaVien;
     private String diaChi;
-    double CPA;
+    private double CPA;
 
     public SV() {
         super();

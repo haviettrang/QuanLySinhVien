@@ -1,6 +1,7 @@
 package chung;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 /**
  *
@@ -13,7 +14,10 @@ public class User {
     private String hoTen;
     private Date ngaySinh;
     private String email;
-    private boolean nam;
+    /**
+     * true is male, false is female
+     */
+    private boolean gioiTinh;
 
     public User() {
     }
@@ -66,12 +70,12 @@ public class User {
         this.email = email;
     }
 
-    public boolean isNam() {
-        return nam;
+    public boolean getGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setNam(boolean nam) {
-        this.nam = nam;
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
     public boolean doiMatKhau(String matKhauCu, String matKhauMoi) {

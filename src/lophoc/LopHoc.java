@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lophoc;
 
 /**
@@ -12,17 +7,17 @@ package lophoc;
 public class LopHoc {
 
     private String maLop;
-    private String tenLop;
-    private String giaoVienDay;
+    private String phongHoc;
+    private String idGiaoVien;
     private String maMonHoc;
 
     public LopHoc() {
     }
 
-    public LopHoc(String maLop, String tenLop, String giaoVienDay, String maMonHoc) {
+    public LopHoc(String maLop, String phongHoc, String idGiaoVien, String maMonHoc) {
         this.maLop = maLop;
-        this.tenLop = tenLop;
-        this.giaoVienDay = giaoVienDay;
+        this.phongHoc = phongHoc;
+        this.idGiaoVien = idGiaoVien;
         this.maMonHoc = maMonHoc;
     }
 
@@ -34,20 +29,20 @@ public class LopHoc {
         this.maLop = maLop;
     }
 
-    public String getTenLop() {
-        return tenLop;
+    public String getPhongHoc() {
+        return phongHoc;
     }
 
-    public void setTenLop(String tenLop) {
-        this.tenLop = tenLop;
+    public void setPhongHoc(String phongHoc) {
+        this.phongHoc = phongHoc;
     }
 
-    public String getGiaoVienDay() {
-        return giaoVienDay;
+    public String getIdGiaoVien() {
+        return idGiaoVien;
     }
 
-    public void setGiaoVienDay(String giaoVienDay) {
-        this.giaoVienDay = giaoVienDay;
+    public void setIdGiaoVien(String idGiaoVien) {
+        this.idGiaoVien = idGiaoVien;
     }
 
     public String getMaMonHoc() {
@@ -57,6 +52,4 @@ public class LopHoc {
     public void setMaMonHoc(String maMonHoc) {
         this.maMonHoc = maMonHoc;
     }
-
-    
 }

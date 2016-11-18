@@ -18,7 +18,8 @@ public class MonHoc {
     public MonHoc() {
     }
 
-    public MonHoc(String maMon, String tenMon, double trongSo, int soTinChi, String KhoaVien, ArrayList<MonHoc> hocPhanDieuKien) {
+    public MonHoc(String maMon, String tenMon, double trongSo, int soTinChi,
+            String KhoaVien, ArrayList<MonHoc> hocPhanDieuKien) {
         this.maMon = maMon;
         this.tenMon = tenMon;
         this.trongSo = trongSo;
