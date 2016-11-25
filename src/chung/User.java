@@ -17,7 +17,7 @@ public class User {
     /**
      * true is male, false is female
      */
-    private boolean gioiTinh;
+    private boolean isNam;
 
     public User() {
     }
@@ -70,12 +70,12 @@ public class User {
         this.email = email;
     }
 
-    public boolean getGioiTinh() {
-        return gioiTinh;
+    public boolean isNam() {
+        return isNam;
     }
 
-    public void setGioiTinh(boolean gioiTinh) {
-        this.gioiTinh = gioiTinh;
+    public void setIsNam(boolean isNam) {
+        this.isNam = isNam;
     }
 
     public boolean doiMatKhau(String matKhauCu, String matKhauMoi) {
