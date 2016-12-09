@@ -17,13 +17,14 @@ public class ConnectDatabase {
     public static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "mysqldatabase";
-    private Connection connection;
+    private static Connection connection;
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
+        connectToDatabase();
         return connection;
     }
 
-    public void connectToDatabase() {
+    private static void connectToDatabase() {
         try {
             Class.forName(DRIVER);
             connection = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);

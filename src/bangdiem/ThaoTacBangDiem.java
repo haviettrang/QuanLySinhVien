@@ -1,7 +1,7 @@
 package bangdiem;
 
-import chung.IThaoTac;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
@@ -9,31 +9,60 @@ import java.util.ArrayList;
  * @website haviettrang.blogspot.com
  * @Notes View my notes at haviettrang.postach.io
  */
-public class ThaoTacBangDiem implements IThaoTac {
+public class ThaoTacBangDiem implements IThaoTacBangDiem {
 
-    @Override
-    public ArrayList<? extends Object> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private ArrayList<BangDiem> listBangDiem;
+
+    public ThaoTacBangDiem() {
+        listBangDiem = new ArrayList<>();
+        init();
+    }
+
+    private void init() {
+        //đọc file lưu thông tin vào ArrayList
     }
 
     @Override
-    public <E> E addNew(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<BangDiem> getAll() {
+        return listBangDiem;
     }
 
     @Override
-    public <E> E update(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean addNew(BangDiem e) {
+        return listBangDiem.add(e);
     }
 
     @Override
-    public <E> E delete(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public BangDiem update(BangDiem e) {
+        return listBangDiem.set(listBangDiem.indexOf(e), e);
     }
 
     @Override
-    public ArrayList<? extends Object> searchByID(String ID) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean delete(BangDiem e) {
+        return listBangDiem.remove(e);
     }
-   
+
+    @Override
+    public ArrayList<BangDiem> searchByMaSinhVien(String maSinhVien) {
+        ArrayList<BangDiem> list = new ArrayList<>();
+        for (Iterator<BangDiem> iterator = list.iterator(); iterator.hasNext();) {
+            BangDiem next = iterator.next();
+            if (next.getMaSv().equalsIgnoreCase(maSinhVien)) {
+                list.add(next);
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public ArrayList<BangDiem> searchByMaLopHoc(String maLopHoc) {
+        ArrayList<BangDiem> list = new ArrayList<>();
+        for (Iterator<BangDiem> iterator = list.iterator(); iterator.hasNext();) {
+            BangDiem next = iterator.next();
+            if (next.getMaLopHoc().equalsIgnoreCase(maLopHoc)) {
+                list.add(next);
+            }
+        }
+        return list;
+    }
 }

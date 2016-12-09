@@ -1,7 +1,7 @@
 package giaovien;
 
-import chung.IThaoTac;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
@@ -9,31 +9,47 @@ import java.util.ArrayList;
  * @website haviettrang.blogspot.com
  * @Notes View my notes at haviettrang.postach.io
  */
-public class ThaoTacGiaoVien implements IThaoTac {
+public class ThaoTacGiaoVien implements IThaoTacGiaoVien {
 
-    @Override
-    public ArrayList<? extends Object> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private ArrayList<GiaoVien> listGiaoVien;
+
+    public ThaoTacGiaoVien() {
+        listGiaoVien = new ArrayList<>();
+        init();
+    }
+
+    private void init() {
+        //đọc file lưu thông tin vào ArrayList
     }
 
     @Override
-    public <E> E addNew(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<GiaoVien> getAll() {
+        return listGiaoVien;
     }
 
     @Override
-    public <E> E update(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean addNew(GiaoVien e) {
+        return listGiaoVien.add(e);
     }
 
     @Override
-    public <E> E delete(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public GiaoVien update(GiaoVien e) {
+        return listGiaoVien.set(listGiaoVien.indexOf(e), e);
     }
 
     @Override
-    public ArrayList<? extends Object> searchByID(String ID) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean delete(GiaoVien e) {
+        return listGiaoVien.remove(e);
     }
 
+    @Override
+    public GiaoVien searchByID(String ID) {
+        for (Iterator<GiaoVien> iterator = listGiaoVien.iterator(); iterator.hasNext();) {
+            GiaoVien next = iterator.next();
+            if (next.getID().equalsIgnoreCase(ID)) {
+                return next;
+            }
+        }
+        return null;
+    }
 }

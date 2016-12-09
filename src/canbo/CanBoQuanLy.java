@@ -9,17 +9,17 @@ import chung.User;
  */
 public class CanBoQuanLy extends User {
     
-    private String soDienThoai;
+    private int soDienThoai;
 
     public CanBoQuanLy() {
         super();
     }
 
-    public String getSoDienThoai() {
+    public int getSoDienThoai() {
         return soDienThoai;
     }
 
-    public void setSoDienThoai(String soDienThoai) {
+    public void setSoDienThoai(int soDienThoai) {
         this.soDienThoai = soDienThoai;
     }
 }

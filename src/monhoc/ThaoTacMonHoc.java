@@ -1,38 +1,54 @@
 package monhoc;
 
-import chung.IThaoTac;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
  * @date Oct 30, 2016 9:15:44 PM
  * @website haviettrang.blogspot.com
  */
-public class ThaoTacMonHoc implements IThaoTac {
+public class ThaoTacMonHoc implements IThaoTacMonHoc {
 
-    @Override
-    public ArrayList<? extends Object> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private ArrayList<MonHoc> listMonHoc;
+
+    public ThaoTacMonHoc() {
+        listMonHoc = new ArrayList<>();
+        init();
+    }
+
+    private void init() {
+        //đọc file lưu thông tin vào ArrayList
     }
 
     @Override
-    public <E> E addNew(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<MonHoc> getAll() {
+        return listMonHoc;
     }
 
     @Override
-    public <E> E update(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean addNew(MonHoc e) {
+        return listMonHoc.add(e);
     }
 
     @Override
-    public <E> E delete(E eletment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public MonHoc update(MonHoc e) {
+        return listMonHoc.set(listMonHoc.indexOf(e), e);
     }
 
     @Override
-    public ArrayList<? extends Object> searchByID(String ID) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean delete(MonHoc e) {
+        return listMonHoc.remove(e);
     }
 
+    @Override
+    public MonHoc searchByID(String ID) {
+        for (Iterator<MonHoc> iterator = listMonHoc.iterator(); iterator.hasNext();) {
+            MonHoc next = iterator.next();
+            if (next.getMaMon().equalsIgnoreCase(ID)) {
+                return next;
+            }
+        }
+        return null;
+    }
 }
