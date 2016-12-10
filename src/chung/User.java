@@ -1,6 +1,8 @@
 package chung;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -8,6 +10,8 @@ import java.sql.Date;
  * @author HAVIETTRANG
  */
 public class User {
+    private static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    
     private String ID;
     private String username;
     private String password;
@@ -77,6 +81,10 @@ public class User {
     public void setIsNam(boolean isNam) {
         this.isNam = isNam;
     }
+    
+    public void setIsNam(String isNam) {
+        this.isNam = Boolean.valueOf(isNam);
+    }
 
     public boolean doiMatKhau(String matKhauCu, String matKhauMoi) {
         if (matKhauCu.equals(password)) {
@@ -84,5 +92,21 @@ public class User {
             return true;
         }
         return false;
+    }
+    
+    public String getNgaySinhString() {
+        return formatter .format(ngaySinh);
+    }
+    /**
+     * Lưu thông tin ngày Sinh
+     * Ví Dụ: 01/01/2016
+     * @param ngaySinh dạng dd/MM/YYYY
+     */
+    public void setNgaySinh(String ngaySinh) {
+        try {
+            this.ngaySinh = (Date) formatter.parse(ngaySinh);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
     }
 }

@@ -34,4 +34,9 @@ public class SVNienChe extends SV {
         return hocHetMonHoc;
     }
 
+    @Override
+    public String personalInfo() {
+        return String.valueOf(hocHetMonHoc);
+    }
+
 }

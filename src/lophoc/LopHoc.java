@@ -1,5 +1,10 @@
 package lophoc;
 
+import giaovien.GiaoVien;
+import java.util.ArrayList;
+import monhoc.MonHoc;
+import sinhvien.SV;
+
 /**
  *
  * @author HAVIETTRANG
@@ -8,17 +13,19 @@ public class LopHoc {
 
     private String maLop;
     private String phongHoc;
-    private String idGiaoVien;
-    private String maMonHoc;
+    private GiaoVien giaoVien;
+    private MonHoc monHoc;
+    private ArrayList<SV> listSV;
 
     public LopHoc() {
     }
 
-    public LopHoc(String maLop, String phongHoc, String idGiaoVien, String maMonHoc) {
+    public LopHoc(String maLop, String phongHoc, GiaoVien giaoVien, MonHoc monHoc, ArrayList<SV> listSV) {
         this.maLop = maLop;
         this.phongHoc = phongHoc;
-        this.idGiaoVien = idGiaoVien;
-        this.maMonHoc = maMonHoc;
+        this.giaoVien = giaoVien;
+        this.monHoc = monHoc;
+        this.listSV = listSV;
     }
 
     public String getMaLop() {
@@ -37,19 +44,36 @@ public class LopHoc {
         this.phongHoc = phongHoc;
     }
 
-    public String getIdGiaoVien() {
-        return idGiaoVien;
+    public GiaoVien getGiaoVien() {
+        return giaoVien;
     }
 
-    public void setIdGiaoVien(String idGiaoVien) {
-        this.idGiaoVien = idGiaoVien;
+    public void setGiaoVien(GiaoVien giaoVien) {
+        this.giaoVien = giaoVien;
     }
 
-    public String getMaMonHoc() {
-        return maMonHoc;
+    public MonHoc getMonHoc() {
+        return monHoc;
     }
 
-    public void setMaMonHoc(String maMonHoc) {
-        this.maMonHoc = maMonHoc;
+    public void setMonHoc(MonHoc monHoc) {
+        this.monHoc = monHoc;
     }
+
+    public ArrayList<SV> getListSV() {
+        return listSV;
+    }
+
+    public void setListSV(ArrayList<SV> listSV) {
+        this.listSV = listSV;
+    }
+
+    public boolean themSV(SV sv) {
+        return listSV.add(sv);
+    }
+
+    public boolean xoaSV(SV sv) {
+        return listSV.remove(sv);
+    }
+
 }

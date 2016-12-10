@@ -52,4 +52,6 @@ public abstract class SV extends User {
     public abstract String getLoaiSinhVien();
 
     public abstract boolean xetTotNghiep();
+    
+    public abstract String personalInfo();
 }

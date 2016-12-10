@@ -31,4 +31,9 @@ public class SVTinChi extends SV {
         return tinChiTichLuy >= 150 && getCPA() >= 1.5;
     }
 
+    @Override
+    public String personalInfo() {
+        return String.valueOf(tinChiTichLuy);
+    }
+
 }
