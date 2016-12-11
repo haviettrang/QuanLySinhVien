@@ -1,5 +1,10 @@
 package monhoc;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -10,15 +15,54 @@ import java.util.Iterator;
  */
 public class ThaoTacMonHoc implements IThaoTacMonHoc {
 
-    private ArrayList<MonHoc> listMonHoc;
+    private static final String FILEPATH = "database/monhoc.csv";
+    //Delimiter used in CSV file
+    private static final String COMMA_DELIMITER = ",";
+    private static final String NEW_LINE_SEPARATOR = "\n";
+    private static final String HYPHEN_SEPARATOR = "-";
+    //CSV file header
+    private static final String FILE_HEADER
+            = "maMon,tenMon,trongSo,soTinChi,KhoaVien,hocPhanDieuKien";
+
+    private static ArrayList<MonHoc> listMonHoc;
 
     public ThaoTacMonHoc() {
         listMonHoc = new ArrayList<>();
         init();
     }
 
+    /**
+     * đọc file lưu thông tin vào ArrayList
+     */
     private void init() {
-        //đọc file lưu thông tin vào ArrayList
+        String line = "";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
+            br.readLine(); //bỏ qua dòng đầu tiên.
+            while ((line = br.readLine()) != null) {
+                String[] info = line.split(COMMA_DELIMITER);
+
+                MonHoc monHoc = new MonHoc();
+
+                monHoc.setMaMon(info[0]);
+                monHoc.setTenMon(info[1]);
+                monHoc.setTrongSo(Double.valueOf(info[2]));
+                monHoc.setSoTinChi(Integer.valueOf(info[3]));
+                monHoc.setKhoaVien(info[4]);
+
+                String[] hpdk = info[5].split(HYPHEN_SEPARATOR);
+                ArrayList<MonHoc> list = new ArrayList<>();
+                for (String hpdk1 : hpdk) {
+                    list.add(searchByID(hpdk1));
+                }
+                monHoc.setHocPhanDieuKien(list);
+
+                listMonHoc.add(monHoc);
+            }
+        } catch (IOException ex) {
+            System.out.println("Error when read .csv file!!!");
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -51,4 +95,49 @@ public class ThaoTacMonHoc implements IThaoTacMonHoc {
         }
         return null;
     }
+
+    @Override
+    public void save() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, true))) {
+            for (Iterator<MonHoc> iterator = listMonHoc.iterator(); iterator.hasNext();) {
+                MonHoc monHoc = iterator.next();
+
+                bw.append(monHoc.getMaMon());
+                bw.append(COMMA_DELIMITER);
+
+                bw.append(monHoc.getTenMon());
+                bw.append(COMMA_DELIMITER);
+
+                bw.append(String.valueOf(monHoc.getTrongSo()));
+                bw.append(COMMA_DELIMITER);
+
+                bw.append(String.valueOf(monHoc.getSoTinChi()));
+                bw.append(COMMA_DELIMITER);
+
+                bw.append(monHoc.getKhoaVien());
+                bw.append(COMMA_DELIMITER);
+
+                if (monHoc.getHocPhanDieuKien() != null) {
+                    ArrayList <MonHoc> a = monHoc.getHocPhanDieuKien();
+                    String hpdk = "";
+                    int i;
+                    for (i = 0; i < a.size() - 1; i++) {
+                        hpdk += a.get(i) + HYPHEN_SEPARATOR;
+                    }
+                    hpdk += a.get(i);
+                    bw.append(hpdk);
+                } else {
+                    bw.append(" ");
+                }
+
+                bw.append(NEW_LINE_SEPARATOR);
+
+                bw.flush();
+            }
+        } catch (IOException ex) {
+            System.out.println("Error when write .csv file!!!");
+            ex.printStackTrace();
+        }
+    }
+
 }

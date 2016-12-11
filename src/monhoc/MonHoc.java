@@ -12,19 +12,19 @@ public class MonHoc {
     private String tenMon;
     private double trongSo;
     private int soTinChi;
-    private String KhoaVien;
+    private String khoaVien;
     private ArrayList<MonHoc> hocPhanDieuKien;
 
     public MonHoc() {
     }
 
     public MonHoc(String maMon, String tenMon, double trongSo, int soTinChi,
-            String KhoaVien, ArrayList<MonHoc> hocPhanDieuKien) {
+            String khoaVien, ArrayList<MonHoc> hocPhanDieuKien) {
         this.maMon = maMon;
         this.tenMon = tenMon;
         this.trongSo = trongSo;
         this.soTinChi = soTinChi;
-        this.KhoaVien = KhoaVien;
+        this.khoaVien = khoaVien;
         this.hocPhanDieuKien = hocPhanDieuKien;
     }
 
@@ -61,11 +61,11 @@ public class MonHoc {
     }
 
     public String getKhoaVien() {
-        return KhoaVien;
+        return khoaVien;
     }
 
     public void setKhoaVien(String KhoaVien) {
-        this.KhoaVien = KhoaVien;
+        this.khoaVien = KhoaVien;
     }
 
     public ArrayList<MonHoc> getHocPhanDieuKien() {
@@ -74,6 +74,11 @@ public class MonHoc {
 
     public void setHocPhanDieuKien(ArrayList<MonHoc> hocPhanDieuKien) {
         this.hocPhanDieuKien = hocPhanDieuKien;
+    }
+    
+    @Override
+    public String toString() {
+        return maMon + tenMon + soTinChi + trongSo + khoaVien;
     }
 
 }

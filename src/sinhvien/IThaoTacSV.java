@@ -20,4 +20,6 @@ interface IThaoTacSV {
     public SV searchByID(String ID);
     
     public ArrayList<? extends SV> searchByClass(String maLop);
+    
+    public void save();
 }

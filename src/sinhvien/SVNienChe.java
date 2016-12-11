@@ -21,7 +21,6 @@ public class SVNienChe extends SV {
 
     public void setHocHetMonHoc(boolean hocHetMonHoc) {
         this.hocHetMonHoc = hocHetMonHoc;
-        
     }
 
     @Override

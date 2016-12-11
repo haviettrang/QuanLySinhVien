@@ -20,4 +20,5 @@ interface IThaoTacMonHoc {
 
     public MonHoc searchByID(String ID);
 
+    public void save();
 }

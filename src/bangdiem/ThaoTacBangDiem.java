@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class ThaoTacBangDiem implements IThaoTacBangDiem {
 
-    private ArrayList<BangDiem> listBangDiem;
+    private static ArrayList<BangDiem> listBangDiem;
 
     public ThaoTacBangDiem() {
         listBangDiem = new ArrayList<>();

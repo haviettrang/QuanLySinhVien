@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class ThaoTacGiaoVien implements IThaoTacGiaoVien {
 
-    private ArrayList<GiaoVien> listGiaoVien;
+    private static ArrayList<GiaoVien> listGiaoVien;
 
     public ThaoTacGiaoVien() {
         listGiaoVien = new ArrayList<>();

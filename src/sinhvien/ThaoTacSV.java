@@ -15,7 +15,7 @@ import java.util.Iterator;
  */
 public class ThaoTacSV implements IThaoTacSV {
 
-    private static final String FILEPATH = "database/student.csv";
+    private static final String FILEPATH = "database/sinhvien.csv";
     //Delimiter used in CSV file
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
@@ -23,7 +23,7 @@ public class ThaoTacSV implements IThaoTacSV {
     private static final String FILE_HEADER
             = "id,username,password,name,birthday,email,gender,class,faculty,address,cpa,accumalated_credit,complete_program";
 
-    private ArrayList<SV> listSV;
+    private static ArrayList<SV> listSV;
 
     public ThaoTacSV() {
         listSV = new ArrayList<>();
@@ -37,11 +37,12 @@ public class ThaoTacSV implements IThaoTacSV {
         String line = "";
         
         try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
+            br.readLine(); //bỏ qua dòng đầu tiên.
             while ((line = br.readLine()) != null) {
                 String [] info = line.split(COMMA_DELIMITER);
-                SV sv = null;
+                
                 if ("".equals(info[11])) {
-                    sv = new SVNienChe();
+                    SVNienChe sv = new SVNienChe();
                     sv.setID(info[0]);
                     sv.setUsername(info[1]);
                     sv.setPassword(info[2]);
@@ -50,11 +51,32 @@ public class ThaoTacSV implements IThaoTacSV {
                     sv.setEmail(info[5]);
                     sv.setIsNam(info[6]);
                     sv.setLop(info[7]);
-                    sv.setKhoaVien(info[]);
+                    sv.setKhoaVien(info[8]);
+                    sv.setDiaChi(info[9]);
+                    sv.setCPA(Double.valueOf(info[10]));
+                    sv.setHocHetMonHoc(Boolean.valueOf(info[12]));
+                    
+                    listSV.add(sv);
                 } else {
+                    SVTinChi sv = new SVTinChi();
+                    sv.setID(info[0]);
+                    sv.setUsername(info[1]);
+                    sv.setPassword(info[2]);
+                    sv.setHoTen(info[3]);
+                    sv.setNgaySinh(info[4]);
+                    sv.setEmail(info[5]);
+                    sv.setIsNam(info[6]);
+                    sv.setLop(info[7]);
+                    sv.setKhoaVien(info[8]);
+                    sv.setDiaChi(info[9]);
+                    sv.setCPA(Double.valueOf(info[10]));
+                    sv.setTinChiTichLuy(Integer.valueOf(info[11]));
+                    
+                    listSV.add(sv);
                 }
             }
         } catch (IOException ex) {
+            System.out.println("Error when read .csv file!!!");
             ex.printStackTrace();
         }
     }
@@ -102,6 +124,7 @@ public class ThaoTacSV implements IThaoTacSV {
         return list;
     }
 
+    @Override
     public void save() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, true))) {
             for (Iterator<? extends SV> iterator = listSV.iterator(); iterator.hasNext();) {
@@ -143,9 +166,9 @@ public class ThaoTacSV implements IThaoTacSV {
                 if (sv instanceof SVTinChi) {
                     bw.append(String.valueOf(((SVTinChi) sv).getTinChiTichLuy()));
                     bw.append(COMMA_DELIMITER);
-                    bw.append("");
+                    bw.append(" ");
                 } else {
-                    bw.append("");
+                    bw.append(" ");
                     bw.append(COMMA_DELIMITER);
                     bw.append(String.valueOf(((SVNienChe) sv).isHocHetMonHoc()));
                 }
@@ -156,7 +179,7 @@ public class ThaoTacSV implements IThaoTacSV {
                 bw.flush();
             }
         } catch (IOException ex) {
-            System.out.println("Error when write csv file!!!");
+            System.out.println("Error when write .csv file!!!");
             ex.printStackTrace();
         }
     }

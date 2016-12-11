@@ -10,7 +10,7 @@ import java.util.Iterator;
  */
 public class ThaoTacCanBoQuanLy implements IThaoTacCanBo {
 
-    private ArrayList<CanBoQuanLy> listCanBoQuanLy;
+    private static ArrayList<CanBoQuanLy> listCanBoQuanLy;
 
     public ThaoTacCanBoQuanLy() {
         listCanBoQuanLy = new ArrayList<>();

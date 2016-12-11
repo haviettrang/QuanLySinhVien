@@ -19,5 +19,6 @@ interface IThaoTacLopHoc {
     public boolean delete(LopHoc e);
 
     public LopHoc searchByID(String ID);
-
+    
+    public void save();
 }
