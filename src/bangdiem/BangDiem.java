@@ -1,15 +1,20 @@
 package bangdiem;
 
+import lophoc.LopHoc;
+import monhoc.MonHoc;
+import sinhvien.SV;
+
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
  * @date Oct 31, 2016 10:21:33 AM
- * @website haviettrang.blogspot.com View my notes at haviettrang.postach.io
+ * @website haviettrang.blogspot.com
+ * @Notes View my notes at haviettrang.postach.io
  */
 public class BangDiem {
 
-    private String maSv;
-    private String maMon;
-    private String maLopHoc;
+    private SV sv;
+    private MonHoc monHoc;
+    private LopHoc lopHoc;
     private double diemQuaTrinh;
     private double diemCuoiKi;
     private double trongSo;
@@ -18,37 +23,37 @@ public class BangDiem {
     public BangDiem() {
     }
 
-    public BangDiem(String maSv, String maMon, String maLopHoc, double diemQuaTrinh, double diemCuoiKi, double trongSo) {
-        this.maSv = maSv;
-        this.maMon = maMon;
+    public BangDiem(SV sv, MonHoc monHoc, LopHoc lopHoc, double diemQuaTrinh, double diemCuoiKi, double trongSo) {
+        this.sv = sv;
+        this.monHoc = monHoc;
         this.diemQuaTrinh = diemQuaTrinh;
         this.diemCuoiKi = diemCuoiKi;
         this.trongSo = trongSo;
-        this.maLopHoc = maLopHoc;
+        this.lopHoc = lopHoc;
     }
 
-    public String getMaSv() {
-        return maSv;
+    public SV getSv() {
+        return sv;
     }
 
-    public void setMaSv(String maSv) {
-        this.maSv = maSv;
+    public void setSv(SV sv) {
+        this.sv = sv;
     }
 
-    public String getMaMon() {
-        return maMon;
+    public MonHoc getMaMon() {
+        return monHoc;
     }
 
-    public void setMaMon(String maMon) {
-        this.maMon = maMon;
+    public void setMaMon(MonHoc monHoc) {
+        this.monHoc = monHoc;
     }
 
-    public String getMaLopHoc() {
-        return maLopHoc;
+    public LopHoc getMaLopHoc() {
+        return lopHoc;
     }
 
-    public void setMaLopHoc(String maLopHoc) {
-        this.maLopHoc = maLopHoc;
+    public void setMaLopHoc(LopHoc lopHoc) {
+        this.lopHoc = lopHoc;
     }
 
     public double getDiemQuaTrinh() {
