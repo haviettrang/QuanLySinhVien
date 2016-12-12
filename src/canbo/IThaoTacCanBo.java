@@ -19,5 +19,7 @@ interface IThaoTacCanBo {
     public boolean delete(CanBoQuanLy e);
 
     public CanBoQuanLy searchByID(String ID);
+    
+    public void save();
 
 }

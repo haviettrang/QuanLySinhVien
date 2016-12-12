@@ -20,4 +20,5 @@ interface IThaoTacGiaoVien {
 
     public GiaoVien searchByID(String ID);
 
+    public void save();
 }

@@ -21,4 +21,6 @@ interface IThaoTacBangDiem {
     public ArrayList<BangDiem> searchByMaSinhVien(String maSinhVien);
 
     public ArrayList<BangDiem> searchByMaLopHoc(String maLopHoc);
+    
+    public void save();
 }

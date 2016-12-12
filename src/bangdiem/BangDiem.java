@@ -40,19 +40,19 @@ public class BangDiem {
         this.sv = sv;
     }
 
-    public MonHoc getMaMon() {
+    public MonHoc getMonHoc() {
         return monHoc;
     }
 
-    public void setMaMon(MonHoc monHoc) {
+    public void setMonHoc(MonHoc monHoc) {
         this.monHoc = monHoc;
     }
 
-    public LopHoc getMaLopHoc() {
+    public LopHoc getLopHoc() {
         return lopHoc;
     }
 
-    public void setMaLopHoc(LopHoc lopHoc) {
+    public void setLopHoc(LopHoc lopHoc) {
         this.lopHoc = lopHoc;
     }
 

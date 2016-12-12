@@ -24,9 +24,6 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String HYPHEN_SEPARATOR = "-";
-    //CSV file header
-    private static final String FILE_HEADER
-            = "maLop,phongHoc,kiHoc,giaoVien,lopHoc,sinhVien";
 
     private static ArrayList<LopHoc> listLopHoc;
 
