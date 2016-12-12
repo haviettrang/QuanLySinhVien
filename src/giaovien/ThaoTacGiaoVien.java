@@ -6,9 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
-import monhoc.MonHoc;
-import monhoc.ThaoTacMonHoc;
 
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
@@ -55,11 +54,8 @@ public class ThaoTacGiaoVien implements IThaoTacGiaoVien {
                 giaoVien.setKhoaVien(info[8]);
 
                 String[] monHoc = info[9].split(HYPHEN_SEPARATOR);
-                ArrayList<MonHoc> list = new ArrayList<>();
-                ThaoTacMonHoc ttmh = new ThaoTacMonHoc();
-                for (String mh : monHoc) {
-                    list.add(ttmh.searchByID(mh));
-                }
+                ArrayList<String> list = new ArrayList<>();
+                list.addAll(Arrays.asList(monHoc));
                 giaoVien.setMonDay(list);
 
                 listGiaoVien.add(giaoVien);
@@ -135,14 +131,14 @@ public class ThaoTacGiaoVien implements IThaoTacGiaoVien {
                 bw.append(COMMA_DELIMITER);
 
                 if (giaoVien.getMonDay() != null) {
-                    ArrayList<MonHoc> a = giaoVien.getMonDay();
-                    String hpdk = "";
+                    ArrayList<String> a = giaoVien.getMonDay();
+                    String monDay = "";
                     int i;
                     for (i = 0; i < a.size() - 1; i++) {
-                        hpdk += a.get(i) + HYPHEN_SEPARATOR;
+                        monDay += a.get(i) + HYPHEN_SEPARATOR;
                     }
-                    hpdk += a.get(i);
-                    bw.append(hpdk);
+                    monDay += a.get(i);
+                    bw.append(monDay);
                 } else {
                     bw.append(" ");
                 }

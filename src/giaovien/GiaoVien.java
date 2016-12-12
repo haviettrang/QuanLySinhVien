@@ -2,7 +2,6 @@ package giaovien;
 
 import chung.User;
 import java.util.ArrayList;
-import monhoc.MonHoc;
 
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
@@ -14,7 +13,7 @@ public class GiaoVien extends User {
 
     private int soDienThoai;
     private String khoaVien;
-    private ArrayList<MonHoc> monDay;
+    private ArrayList<String> monDay;
 
     public GiaoVien() {
 
@@ -36,11 +35,11 @@ public class GiaoVien extends User {
         this.khoaVien = khoaVien;
     }
 
-    public ArrayList<MonHoc> getMonDay() {
+    public ArrayList<String> getMonDay() {
         return monDay;
     }
 
-    public void setMonDay(ArrayList<MonHoc> monDay) {
+    public void setMonDay(ArrayList<String> monDay) {
         this.monDay = monDay;
     }
 
