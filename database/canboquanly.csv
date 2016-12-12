@@ -1,1 +1,3 @@
 id,username,password,name,birthday,email,gender,phoneNumber
+cb1,cb1,cb1,Cán Bộ 1,03/07/2015,cb1@hust,false,01234
+cb2,cb2,cb2,Cán Bộ 2,03/07/2015,cb2@hust,false,01234

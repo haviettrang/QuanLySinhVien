@@ -1,1 +1,3 @@
 id,username,password,name,birthday,email,gender,phoneNumber,faculty,subjects
+gv1,gv1,gv1,Giáo Viên 1,02/05/2016,gv1@hust,true,0123456789,KCNTT,IT3100-IT3910
+gv2,gv2,gv2,Giáo Viên 2,02/05/2016,gv2@hust,true,0123456789,KCNTT,IT3910
