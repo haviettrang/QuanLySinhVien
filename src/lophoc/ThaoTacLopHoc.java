@@ -18,7 +18,7 @@ import sinhvien.ThaoTacSV;
  * @website haviettrang.blogspot.com
  */
 public class ThaoTacLopHoc implements IThaoTacLopHoc {
-    
+
     private static final String FILEPATH = "database/lophoc.csv";
     //Delimiter used in CSV file
     private static final String COMMA_DELIMITER = ",";
@@ -36,9 +36,10 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
      * đọc file lưu thông tin vào ArrayList
      */
     private void init() {
-          String line = "";
+        String line = "";
 
         try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
+            br.readLine(); //bỏ qua dòng đầu tiên.
             while ((line = br.readLine()) != null) {
                 String[] info = line.split(COMMA_DELIMITER);
 
@@ -47,10 +48,10 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
                 lopHoc.setMaLop(info[0]);
                 lopHoc.setPhongHoc(info[1]);
                 lopHoc.setKiHoc(info[2]);
-                
+
                 ThaoTacGiaoVien ttgv = new ThaoTacGiaoVien();
                 lopHoc.setGiaoVien(ttgv.searchByID(info[3]));
-                
+
                 ThaoTacMonHoc ttmh = new ThaoTacMonHoc();
                 lopHoc.setMonHoc(ttmh.searchByID(info[4]));
 
@@ -62,7 +63,7 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
                 }
 
                 lopHoc.setListSV(listSV);
-                
+
                 listLopHoc.add(lopHoc);
             }
         } catch (IOException ex) {
