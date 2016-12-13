@@ -24,6 +24,8 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String HYPHEN_SEPARATOR = "-";
+    
+    private static final String FILE_HEADER = "maLop,phongHoc,kiHoc,maGiaoVien,maMonHoc,maSinhVien";
 
     private static ArrayList<LopHoc> listLopHoc;
 
@@ -106,6 +108,10 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
     @Override
     public void save() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, true))) {
+            
+            bw.append(FILE_HEADER);
+            bw.append(NEW_LINE_SEPARATOR);
+            
             for (Iterator<LopHoc> iterator = listLopHoc.iterator(); iterator.hasNext();) {
                 LopHoc lopHoc = iterator.next();
 
@@ -140,6 +146,22 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
         } catch (IOException ex) {
             System.out.println("Error when write .csv file!!!");
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void themSV(String maLop, String kiHoc, String maSV) {
+        for (int i = 0; i < listLopHoc.size(); i++) {
+            LopHoc lopHoc = listLopHoc.get(i);
+            if (lopHoc.getMaLop().equalsIgnoreCase(maLop) && lopHoc.getKiHoc().equalsIgnoreCase(kiHoc)) {
+                
+                ThaoTacSV ttsv = new ThaoTacSV();
+                SV sv = ttsv.searchByID(maSV);
+                
+                lopHoc.themSV(sv);
+                
+                listLopHoc.set(i, lopHoc);
+            }
         }
     }
 }

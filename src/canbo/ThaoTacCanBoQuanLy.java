@@ -19,6 +19,9 @@ public class ThaoTacCanBoQuanLy implements IThaoTacCanBo {
     //Delimiter used in CSV file
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
+    
+    private static final String FILE_HEADER =
+            "id,username,password,name,birthday,email,gender,phoneNumber";
 
     private static ArrayList<CanBoQuanLy> listCanBoQuanLy;
 
@@ -90,7 +93,11 @@ public class ThaoTacCanBoQuanLy implements IThaoTacCanBo {
 
     @Override
     public void save() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, false))) {
+            
+            bw.append(FILE_HEADER);
+            bw.append(NEW_LINE_SEPARATOR);
+            
             for (Iterator<CanBoQuanLy> iterator = listCanBoQuanLy.iterator(); iterator.hasNext();) {
                 CanBoQuanLy canBo = iterator.next();
 

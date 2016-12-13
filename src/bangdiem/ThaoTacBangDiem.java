@@ -23,6 +23,9 @@ public class ThaoTacBangDiem implements IThaoTacBangDiem {
     //Delimiter used in CSV file
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
+    
+    private static final String FILE_HEADER =
+            "maSv,maMon,maLopHoc,diemQuaTrinh,DiemCuoiKi,trongSo,diemTongKet";
 
     private static ArrayList<BangDiem> listBangDiem;
     
@@ -112,7 +115,11 @@ public class ThaoTacBangDiem implements IThaoTacBangDiem {
 
     @Override
     public void save() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, false))) {
+            
+            bw.append(FILE_HEADER);
+            bw.append(NEW_LINE_SEPARATOR);
+            
             for (Iterator<BangDiem> iterator = listBangDiem.iterator(); iterator.hasNext();) {
                 BangDiem bangDiem = iterator.next();
 

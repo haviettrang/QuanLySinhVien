@@ -22,6 +22,9 @@ public class ThaoTacGiaoVien implements IThaoTacGiaoVien {
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String HYPHEN_SEPARATOR = "-";
+    
+    private static final String FILE_HEADER =
+            "id,username,password,name,birthday,email,gender,phoneNumber,faculty,subjects";
 
     private static ArrayList<GiaoVien> listGiaoVien;
 
@@ -100,6 +103,10 @@ public class ThaoTacGiaoVien implements IThaoTacGiaoVien {
     @Override
     public void save() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, true))) {
+            
+            bw.append(FILE_HEADER);
+            bw.append(NEW_LINE_SEPARATOR);
+            
             for (Iterator<GiaoVien> iterator = listGiaoVien.iterator(); iterator.hasNext();) {
                 GiaoVien giaoVien = iterator.next();
 

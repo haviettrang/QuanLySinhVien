@@ -99,6 +99,10 @@ public class ThaoTacMonHoc implements IThaoTacMonHoc {
     @Override
     public void save() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, true))) {
+            
+            bw.append(FILE_HEADER);
+            bw.append(NEW_LINE_SEPARATOR);
+            
             for (Iterator<MonHoc> iterator = listMonHoc.iterator(); iterator.hasNext();) {
                 MonHoc monHoc = iterator.next();
 

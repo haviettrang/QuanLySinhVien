@@ -21,4 +21,12 @@ interface IThaoTacLopHoc {
     public LopHoc searchByID(String ID);
     
     public void save();
+    
+    /**
+     * method đăng ký môn học cho sinh viên
+     * @param maLop mã lớp cần đăng kí
+     * @param kiHoc kì học sv đkí
+     * @param maSV mã số sv của sv
+     */
+    public void themSV(String maLop,String kiHoc, String maSV);
 }

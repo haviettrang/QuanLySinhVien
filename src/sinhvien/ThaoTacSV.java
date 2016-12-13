@@ -127,6 +127,10 @@ public class ThaoTacSV implements IThaoTacSV {
     @Override
     public void save() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILEPATH, true))) {
+            
+            bw.append(FILE_HEADER);
+            bw.append(NEW_LINE_SEPARATOR);
+            
             for (Iterator<? extends SV> iterator = listSV.iterator(); iterator.hasNext();) {
                 SV sv = iterator.next();
 
