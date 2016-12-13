@@ -1,15 +1,11 @@
 package bangdiem;
 
-import java.io.BufferedReader;
+import database.ReadFile;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lophoc.ThaoTacLopHoc;
-import monhoc.ThaoTacMonHoc;
-import sinhvien.ThaoTacSV;
 
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
@@ -29,42 +25,8 @@ public class ThaoTacBangDiem implements IThaoTacBangDiem {
 
     private static ArrayList<BangDiem> listBangDiem;
     
-    private static ThaoTacSV ttsv;
-    private static ThaoTacMonHoc ttmh;
-    private static ThaoTacLopHoc ttlh;
-
     public ThaoTacBangDiem() {
-        listBangDiem = new ArrayList<>();
-        ttsv = new ThaoTacSV();
-        ttmh = new ThaoTacMonHoc();
-        ttlh = new ThaoTacLopHoc();
-        init();
-    }
-
-    /**
-     * đọc file lưu thông tin vào ArrayList
-     */
-    private void init() {
-        String line = "";
-
-        try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
-            br.readLine(); //bỏ qua dòng đầu tiên.
-            while ((line = br.readLine()) != null) {
-                String[] info = line.split(COMMA_DELIMITER);
-
-                BangDiem bangDiem = new BangDiem();
-
-                bangDiem.setSv(ttsv.searchByID(info[0]));
-                bangDiem.setLopHoc(ttlh.searchByID(info[1]));
-                bangDiem.setDiemQuaTrinh(Double.valueOf(info[2]));
-                bangDiem.setDiemCuoiKi(Double.valueOf(info[3]));
-
-                listBangDiem.add(bangDiem);
-            }
-        } catch (IOException ex) {
-            System.out.println("Error when read .csv file!!!");
-            ex.printStackTrace();
-        }
+        listBangDiem = ReadFile.getListBangDiem();
     }
 
     @Override

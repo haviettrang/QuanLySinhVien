@@ -1,12 +1,10 @@
 package giaovien;
 
-import java.io.BufferedReader;
+import database.ReadFile;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -29,44 +27,7 @@ public class ThaoTacGiaoVien implements IThaoTacGiaoVien {
     private static ArrayList<GiaoVien> listGiaoVien;
 
     public ThaoTacGiaoVien() {
-        listGiaoVien = new ArrayList<>();
-        init();
-    }
-
-    /**
-     * đọc file lưu thông tin vào ArrayList
-     */
-    private void init() {
-        String line = "";
-
-        try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
-            br.readLine(); //bỏ qua dòng đầu tiên.
-            while ((line = br.readLine()) != null) {
-                String[] info = line.split(COMMA_DELIMITER);
-
-                GiaoVien giaoVien = new GiaoVien();
-
-                giaoVien.setID(info[0]);
-                giaoVien.setUsername(info[1]);
-                giaoVien.setPassword(info[2]);
-                giaoVien.setHoTen(info[3]);
-                giaoVien.setNgaySinh(info[4]);
-                giaoVien.setEmail(info[5]);
-                giaoVien.setIsNam(info[6]);
-                giaoVien.setSoDienThoai(Integer.parseInt(info[7]));
-                giaoVien.setKhoaVien(info[8]);
-
-                String[] monHoc = info[9].split(HYPHEN_SEPARATOR);
-                ArrayList<String> list = new ArrayList<>();
-                list.addAll(Arrays.asList(monHoc));
-                giaoVien.setMonDay(list);
-
-                listGiaoVien.add(giaoVien);
-            }
-        } catch (IOException ex) {
-            System.out.println("Error when read .cgiaoVien file!!!");
-            ex.printStackTrace();
-        }
+        listGiaoVien = ReadFile.getListGiaoVien();
     }
 
     @Override

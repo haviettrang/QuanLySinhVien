@@ -1,8 +1,7 @@
 package monhoc;
 
-import java.io.BufferedReader;
+import database.ReadFile;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,42 +26,7 @@ public class ThaoTacMonHoc implements IThaoTacMonHoc {
     private static ArrayList<MonHoc> listMonHoc;
 
     public ThaoTacMonHoc() {
-        listMonHoc = new ArrayList<>();
-        init();
-    }
-
-    /**
-     * đọc file lưu thông tin vào ArrayList
-     */
-    private void init() {
-        String line = "";
-
-        try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
-            br.readLine(); //bỏ qua dòng đầu tiên.
-            while ((line = br.readLine()) != null) {
-                String[] info = line.split(COMMA_DELIMITER);
-
-                MonHoc monHoc = new MonHoc();
-
-                monHoc.setMaMon(info[0]);
-                monHoc.setTenMon(info[1]);
-                monHoc.setTrongSo(Double.valueOf(info[2]));
-                monHoc.setSoTinChi(Integer.valueOf(info[3]));
-                monHoc.setKhoaVien(info[4]);
-
-                String[] hpdk = info[5].split(HYPHEN_SEPARATOR);
-                ArrayList<MonHoc> list = new ArrayList<>();
-                for (String hpdk1 : hpdk) {
-                    list.add(searchByID(hpdk1));
-                }
-                monHoc.setHocPhanDieuKien(list);
-
-                listMonHoc.add(monHoc);
-            }
-        } catch (IOException ex) {
-            System.out.println("Error when read .csv file!!!");
-            ex.printStackTrace();
-        }
+        listMonHoc = ReadFile.getListMonHoc();
     }
 
     @Override

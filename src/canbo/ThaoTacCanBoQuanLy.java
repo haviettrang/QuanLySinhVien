@@ -1,8 +1,7 @@
 package canbo;
 
-import java.io.BufferedReader;
+import database.ReadFile;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,38 +25,7 @@ public class ThaoTacCanBoQuanLy implements IThaoTacCanBo {
     private static ArrayList<CanBoQuanLy> listCanBoQuanLy;
 
     public ThaoTacCanBoQuanLy() {
-        listCanBoQuanLy = new ArrayList<>();
-        init();
-    }
-
-    /**
-     * đọc file lưu thông tin vào ArrayList
-     */
-    private void init() {
-        String line = "";
-
-        try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
-            br.readLine(); //bỏ qua dòng đầu tiên.
-            while ((line = br.readLine()) != null) {
-                String[] info = line.split(COMMA_DELIMITER);
-
-                CanBoQuanLy canBo = new CanBoQuanLy();
-
-                canBo.setID(info[0]);
-                canBo.setUsername(info[1]);
-                canBo.setPassword(info[2]);
-                canBo.setHoTen(info[3]);
-                canBo.setNgaySinh(info[4]);
-                canBo.setEmail(info[5]);
-                canBo.setIsNam(info[6]);
-                canBo.setSoDienThoai(Integer.parseInt(info[7]));
-
-                listCanBoQuanLy.add(canBo);
-            }
-        } catch (IOException ex) {
-            System.out.println("Error when read .csv file!!!");
-            ex.printStackTrace();
-        }
+        listCanBoQuanLy = ReadFile.getListCanBo();
     }
 
     @Override
