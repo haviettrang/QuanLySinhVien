@@ -25,7 +25,7 @@ public class ThaoTacBangDiem implements IThaoTacBangDiem {
     private static final String NEW_LINE_SEPARATOR = "\n";
     
     private static final String FILE_HEADER =
-            "maSv,maMon,maLopHoc,diemQuaTrinh,DiemCuoiKi,trongSo,diemTongKet";
+            "maSv,maLopHoc,diemQuaTrinh,DiemCuoiKi,diemTongKet";
 
     private static ArrayList<BangDiem> listBangDiem;
     
@@ -55,11 +55,9 @@ public class ThaoTacBangDiem implements IThaoTacBangDiem {
                 BangDiem bangDiem = new BangDiem();
 
                 bangDiem.setSv(ttsv.searchByID(info[0]));
-                bangDiem.setMonHoc(ttmh.searchByID(info[1]));
-                bangDiem.setLopHoc(ttlh.searchByID(info[2]));
-                bangDiem.setDiemQuaTrinh(Double.valueOf(info[3]));
-                bangDiem.setDiemCuoiKi(Double.valueOf(info[4]));
-                bangDiem.setTrongSo(Double.valueOf(info[5]));
+                bangDiem.setLopHoc(ttlh.searchByID(info[1]));
+                bangDiem.setDiemQuaTrinh(Double.valueOf(info[2]));
+                bangDiem.setDiemCuoiKi(Double.valueOf(info[3]));
 
                 listBangDiem.add(bangDiem);
             }
@@ -126,9 +124,6 @@ public class ThaoTacBangDiem implements IThaoTacBangDiem {
                 bw.append(bangDiem.getSv().getID());
                 bw.append(COMMA_DELIMITER);
 
-                bw.append(bangDiem.getMonHoc().getMaMon());
-                bw.append(COMMA_DELIMITER);
-
                 bw.append(bangDiem.getLopHoc().getMaLop());
                 bw.append(COMMA_DELIMITER);
 
@@ -136,9 +131,6 @@ public class ThaoTacBangDiem implements IThaoTacBangDiem {
                 bw.append(COMMA_DELIMITER);
 
                 bw.append(String.valueOf(bangDiem.getDiemCuoiKi()));
-                bw.append(COMMA_DELIMITER);
-
-                bw.append(String.valueOf(bangDiem.getTrongSo()));
                 bw.append(COMMA_DELIMITER);
                 
                 bw.append(String.valueOf(bangDiem.getDiemTongKet()));
