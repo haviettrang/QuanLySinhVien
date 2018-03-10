@@ -29,4 +29,6 @@ interface IThaoTacLopHoc {
      * @param maSV mã số sv của sv
      */
     public void themSV(String maLop,String kiHoc, String maSV);
+    
+    public void xoaSV(String maLop, String kiHoc, String maSV);
 }

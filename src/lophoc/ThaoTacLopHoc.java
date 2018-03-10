@@ -1,14 +1,11 @@
 package lophoc;
 
-import giaovien.ThaoTacGiaoVien;
-import java.io.BufferedReader;
+import database.ReadFile;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import monhoc.ThaoTacMonHoc;
 import sinhvien.SV;
 import sinhvien.ThaoTacSV;
 
@@ -30,48 +27,7 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
     private static ArrayList<LopHoc> listLopHoc;
 
     public ThaoTacLopHoc() {
-        listLopHoc = new ArrayList<>();
-        init();
-    }
-
-    /**
-     * đọc file lưu thông tin vào ArrayList
-     */
-    private void init() {
-        String line = "";
-
-        try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
-            br.readLine(); //bỏ qua dòng đầu tiên.
-            while ((line = br.readLine()) != null) {
-                String[] info = line.split(COMMA_DELIMITER);
-
-                LopHoc lopHoc = new LopHoc();
-
-                lopHoc.setMaLop(info[0]);
-                lopHoc.setPhongHoc(info[1]);
-                lopHoc.setKiHoc(info[2]);
-
-                ThaoTacGiaoVien ttgv = new ThaoTacGiaoVien();
-                lopHoc.setGiaoVien(ttgv.searchByID(info[3]));
-
-                ThaoTacMonHoc ttmh = new ThaoTacMonHoc();
-                lopHoc.setMonHoc(ttmh.searchByID(info[4]));
-
-                String[] listIDSV = info[5].split(HYPHEN_SEPARATOR);
-                ArrayList<SV> listSV = new ArrayList<>();
-                ThaoTacSV ttsv = new ThaoTacSV();
-                for (String id : listIDSV) {
-                    listSV.add(ttsv.searchByID(id));
-                }
-
-                lopHoc.setListSV(listSV);
-
-                listLopHoc.add(lopHoc);
-            }
-        } catch (IOException ex) {
-            System.out.println("Error when read .csv file!!!");
-            ex.printStackTrace();
-        }
+        listLopHoc = ReadFile.getListLopHoc();
     }
 
     @Override
@@ -82,6 +38,10 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
     @Override
     public boolean addNew(LopHoc e) {
         return listLopHoc.add(e);
+    }
+    
+    public boolean addNew(String maSV, String maLop, double diemQuaTrinh, double diemCuoiKi) {
+        
     }
 
     @Override
@@ -134,10 +94,10 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
                 ArrayList<SV> a = lopHoc.getListSV();
                 int i;
                 for (i = 0; i < a.size() - 1; i++) {
-                    listIDSV.append(a.get(i));
+                    listIDSV.append(a.get(i).getID());
                     listIDSV.append(HYPHEN_SEPARATOR);
                 }
-                listIDSV.append(a.get(i));
+                listIDSV.append(a.get(i).getID());
                 bw.append(listIDSV);
                 bw.append(NEW_LINE_SEPARATOR);
 
@@ -159,6 +119,22 @@ public class ThaoTacLopHoc implements IThaoTacLopHoc {
                 SV sv = ttsv.searchByID(maSV);
                 
                 lopHoc.themSV(sv);
+                
+                listLopHoc.set(i, lopHoc);
+            }
+        }
+    }
+
+    @Override
+    public void xoaSV(String maLop, String kiHoc, String maSV) {
+        for (int i = 0; i < listLopHoc.size(); i++) {
+            LopHoc lopHoc = listLopHoc.get(i);
+            if (lopHoc.getMaLop().equalsIgnoreCase(maLop) && lopHoc.getKiHoc().equalsIgnoreCase(kiHoc)) {
+                
+                ThaoTacSV ttsv = new ThaoTacSV();
+                SV sv = ttsv.searchByID(maSV);
+                
+                lopHoc.xoaSV(sv);
                 
                 listLopHoc.set(i, lopHoc);
             }

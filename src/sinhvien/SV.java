@@ -12,6 +12,7 @@ public abstract class SV extends User {
     private String khoaVien;
     private String diaChi;
     private double CPA;
+    private int tinChiTichLuy;
 
     public SV() {
         super();
@@ -47,6 +48,14 @@ public abstract class SV extends User {
 
     public void setCPA(double CPA) {
         this.CPA = CPA;
+    }
+    
+    public int getTinChiTichLuy() {
+        return tinChiTichLuy;
+    }
+
+    public void setTinChiTichLuy(int tinChiTichLuy) {
+        this.tinChiTichLuy = tinChiTichLuy;
     }
     
     public abstract String getLoaiSinhVien();

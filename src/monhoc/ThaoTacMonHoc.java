@@ -86,7 +86,7 @@ public class ThaoTacMonHoc implements IThaoTacMonHoc {
                 bw.append(COMMA_DELIMITER);
 
                 if (monHoc.getHocPhanDieuKien() != null) {
-                    ArrayList <MonHoc> a = monHoc.getHocPhanDieuKien();
+                    ArrayList <String> a = monHoc.getHocPhanDieuKien();
                     String hpdk = "";
                     int i;
                     for (i = 0; i < a.size() - 1; i++) {

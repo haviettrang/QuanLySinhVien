@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import sinhvien.SV;
+import sinhvien.ThaoTacSV;
 
 /**
  * @author Hà Viết Tráng - HAVIETTRANG
@@ -36,7 +38,23 @@ public class ThaoTacBangDiem implements IThaoTacBangDiem {
 
     @Override
     public boolean addNew(BangDiem e) {
-        return listBangDiem.add(e);
+        boolean check = listBangDiem.add(e);
+        
+        if (!check) {
+            return check;
+        }
+        
+        SV sv = e.getSv();
+        
+        double cpa = sv.getCPA();
+        int tctl = sv.getTinChiTichLuy();
+        int soTinChi = e.getLopHoc().getMonHoc().getSoTinChi();
+        sv.setCPA((cpa * tctl + e.getDiemTongKet() * soTinChi) / (soTinChi + sv.getTinChiTichLuy()));
+        ThaoTacSV ttsv = new ThaoTacSV();
+        ttsv.update(sv);
+        ttsv.save();
+        
+        return check;
     }
 
     @Override

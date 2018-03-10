@@ -97,7 +97,7 @@ public class ReadFile {
             while ((line = br.readLine()) != null) {
                 String [] info = line.split(COMMA_DELIMITER);
                 
-                if ("".equals(info[11])) {
+                if (!" ".equals(info[12])) {
                     SVNienChe sv = new SVNienChe();
                     sv.setID(info[0]);
                     sv.setUsername(info[1]);
@@ -152,12 +152,7 @@ public class ReadFile {
                 monHoc.setKhoaVien(info[4]);
 
                 String[] hpdk = info[5].split(HYPHEN_SEPARATOR);
-                ArrayList<MonHoc> list = new ArrayList<>();
-                ThaoTacMonHoc ttmh = new ThaoTacMonHoc();
-                for (String hpdk1 : hpdk) {
-                    list.add(ttmh.searchByID(hpdk1));
-                }
-                monHoc.setHocPhanDieuKien(list);
+                monHoc.setHocPhanDieuKien((ArrayList<String>) Arrays.asList(hpdk));
 
                 listMonHoc.add(monHoc);
             }
